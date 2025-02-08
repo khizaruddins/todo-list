@@ -3,6 +3,7 @@ import { InputI } from '../../shared/interfaces/input.interface';
 import {
   FormBuilder,
   FormGroup,
+  FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
@@ -10,23 +11,23 @@ import { InputComponent } from '../../core/input/input.component';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { MatIconModule } from '@angular/material/icon';
-
-interface registerFormI {
-  fname: InputI;
-  lname: InputI;
-  email: InputI;
-  pass: InputI;
-  repass: InputI;
-}
-
-interface loginFormI {
-  email: InputI;
-  pass: InputI;
-}
+import { ButtonComponent } from '../../core/button/button.component';
+import { ButtonI } from '../../shared/interfaces/button.interface';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { CheckboxComponent } from '../../core/checkbox/checkbox.component';
 
 @Component({
   selector: 'app-login-register',
-  imports: [RouterModule, ReactiveFormsModule, InputComponent, MatIconModule],
+  imports: [
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    InputComponent,
+    MatIconModule,
+    ButtonComponent,
+    MatCheckboxModule,
+    CheckboxComponent,
+  ],
   templateUrl: './login-register.component.html',
   styleUrl: './login-register.component.scss',
 })
@@ -40,6 +41,14 @@ export class LoginRegisterComponent {
   router = inject(Router);
   subs: Subscription[] = [];
   destroyRef = inject(DestroyRef);
+  loginBtnConfig: ButtonI = {
+    width: '25%',
+    height: '5rem',
+    btnType: 'outlined',
+    label: 'Login',
+    type: 'submit',
+    preIcon: 'lock_closed',
+  };
 
   constructor() {
     this.router.events.subscribe((event) => {
@@ -70,7 +79,7 @@ export class LoginRegisterComponent {
   initForm() {
     this.loginFormGroup = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: [
+      pass: [
         '',
         [
           Validators.required,
@@ -79,6 +88,7 @@ export class LoginRegisterComponent {
           ),
         ],
       ],
+      remember: [Validators.required],
     });
 
     this.registerFormGroup = this.fb.group({
@@ -106,17 +116,11 @@ export class LoginRegisterComponent {
     });
   }
 
-  ngAfterViewInit() {
-    let keyarr: string[] = this.objectKeys(this.loginFormConfig);
-    keyarr.forEach((key) => {
-      console.log(this.loginFormConfig[key]);
-    });
-  }
-
   initFormConfig() {
     this.loginFormConfig = {
       email: {
         label: 'Enter your email',
+        field: 'input',
         type: 'email',
         name: 'email',
         placeholder: 'abc@abc.com',
@@ -129,6 +133,7 @@ export class LoginRegisterComponent {
       },
       pass: {
         label: 'Enter your password',
+        field: 'input',
         type: 'password',
         name: 'pass',
         placeholder: 'eg. *******',
@@ -137,6 +142,12 @@ export class LoginRegisterComponent {
         errorMessage: {
           required: 'Field required',
         },
+      },
+      remember: {
+        field: 'checkbox',
+        label: 'Remember me',
+        checked: false,
+        control: this.getControl('login', 'remember'),
       },
     };
 
@@ -210,7 +221,16 @@ export class LoginRegisterComponent {
       : this.registerFormGroup.get(controlName);
   }
 
-  onLoginSubmit(event: Event) {}
+  toggleLoginSignupForm() {
+    this.info.mode = this.info.mode === 'login' ? 'register' : 'login';
+  }
+
+  onLoginSubmit(event: Event) {
+    if (this.loginFormGroup.valid) {
+    } else {
+      this.loginFormGroup.markAllAsTouched();
+    }
+  }
 
   onSignupSubmit(event: Event) {}
 }

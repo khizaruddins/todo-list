@@ -12,28 +12,23 @@
       [formControl]="config.control"
       (input)="onInputChange($event)"
     />
-    @if (config.control?.hasError('required') && config.control.touched &&
-    config.control.dirty) {
+    @if (config.control?.hasError('required') && config.control.touched) {
     <mat-error>
       {{ config.errorMessage.required }}
     </mat-error>
-    } @if (config.control?.hasError('email') && config.control.touched &&
-    config.control.dirty) {
+    } @if (config.control?.hasError('email') && config.control.touched) {
     <mat-error>
       {{ config.errorMessage.email }}
     </mat-error>
-    } @if (config.control?.hasError('max') && config.control.touched &&
-    config.control.dirty) {
+    } @if (config.control?.hasError('max') && config.control.touched) {
     <mat-error>
       {{ config.errorMessage.max }}
     </mat-error>
-    } @if (config.control?.hasError('min') && config.control.touched &&
-    config.control.dirty) {
+    } @if (config.control?.hasError('min') && config.control.touched) {
     <mat-error>
       {{ config.errorMessage.min }}
     </mat-error>
-    } @if (config.control?.hasError('pattern') && config.control.touched &&
-    config.control.dirty) {
+    } @if (config.control?.hasError('pattern') && config.control.touched) {
     <mat-error>
       {{ config.errorMessage.pattern }}
     </mat-error>

@@ -1,1 +1,28 @@
-<p>button works!</p>
+<div class="btn-wrapper">
+  @if (config.btnType === 'basic') {
+  <button
+    mat-button
+    (click)="handleClick($event)"
+    [ngStyle]="{ width: config.width, height: config.height }"
+  >
+    <ng-container *ngTemplateOutlet="btnContent"></ng-container>
+  </button>
+  } @if (config.btnType === 'outlined') {
+  <button
+    mat-stroked-button
+    (click)="handleClick($event)"
+    [ngStyle]="{ width: config.width, height: config.height }"
+  >
+    <ng-container *ngTemplateOutlet="btnContent"></ng-container>
+  </button>
+  }
+</div>
+<ng-template #btnContent>
+  @if (config.preIcon) {
+  <mat-icon>{{ config.preIcon }}</mat-icon>
+  }
+  {{ config.label }}
+  @if (config.postIcon) {
+  <mat-icon>{{ config.postIcon }}</mat-icon>
+  }
+</ng-template>

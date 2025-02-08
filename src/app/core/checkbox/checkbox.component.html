@@ -1,0 +1,8 @@
+<div class="checkbox-wrapper">
+  <mat-checkbox
+    [checked]="config.checked"
+    (change)="onHandleChange($event)"
+    [formControl]="config.control"
+    >{{ config.label }}</mat-checkbox
+  >
+</div>

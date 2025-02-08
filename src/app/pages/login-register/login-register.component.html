@@ -10,14 +10,24 @@
   </div>
   <div class="left">
     @if(info.mode === 'login') {
+    <div class="main-title">Todos</div>
+    <hr />
     <div class="login-title">
+      <mat-icon>web_asset</mat-icon>
+      Welcome!
+      <mat-icon>cloud_download</mat-icon>
+      Please
       <mat-icon>lock_open</mat-icon>
-      Signin
+      Signin!
     </div>
     <form class="login-form" (ngSubmit)="onLoginSubmit($event)">
       @for (key of objectKeys(loginFormConfig); track key) {
+      @if(loginFormConfig[key].field === 'input') {
       <app-input [config]="loginFormConfig[key]" />
-      }
+      } @else if (loginFormConfig[key].field === 'checkbox') {
+      <app-checkbox [config]="loginCheckboxConfig[key]"></app-checkbox>
+      } }
+      <app-button [config]="loginBtnConfig" />
     </form>
     } @if (info.mode === 'register') { @for (key of
     objectKeys(registerFormConfig); track key) {
