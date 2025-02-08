@@ -1,0 +1,19 @@
+.input-wrapper {
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  mat-label {
+    font-size: 2rem;
+  }
+
+  ::ng-deep input {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  ::ng-deep mat-error {
+    font-size: 1.5rem;
+  }
+}

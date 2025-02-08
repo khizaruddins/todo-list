@@ -1,0 +1,27 @@
+<div class="accounts-wrapper">
+  <div class="right">
+    <div class="content-box">
+      <div class="title">{{ info.title }}</div>
+      <div class="subtitle">{{ info.subtitle }}</div>
+      <div class="desc">
+        {{ info.desc }}
+      </div>
+    </div>
+  </div>
+  <div class="left">
+    @if(info.mode === 'login') {
+    <div class="login-title">
+      <mat-icon>lock_open</mat-icon>
+      Signin
+    </div>
+    <form class="login-form" (ngSubmit)="onLoginSubmit($event)">
+      @for (key of objectKeys(loginFormConfig); track key) {
+      <app-input [config]="loginFormConfig[key]" />
+      }
+    </form>
+    } @if (info.mode === 'register') { @for (key of
+    objectKeys(registerFormConfig); track key) {
+    <app-input [config]="registerFormConfig[key]" />
+    } }
+  </div>
+</div>

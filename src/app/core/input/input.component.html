@@ -1,0 +1,42 @@
+<div class="input-wrapper">
+  <mat-form-field appearance="outline">
+    <mat-label>
+      {{ config.label }}
+    </mat-label>
+    <input
+      matInput
+      [type]="config.type"
+      [placeholder]="config.placeholder"
+      [name]="config.name"
+      [value]="config.value"
+      [formControl]="config.control"
+      (input)="onInputChange($event)"
+    />
+    @if (config.control?.hasError('required') && config.control.touched &&
+    config.control.dirty) {
+    <mat-error>
+      {{ config.errorMessage.required }}
+    </mat-error>
+    } @if (config.control?.hasError('email') && config.control.touched &&
+    config.control.dirty) {
+    <mat-error>
+      {{ config.errorMessage.email }}
+    </mat-error>
+    } @if (config.control?.hasError('max') && config.control.touched &&
+    config.control.dirty) {
+    <mat-error>
+      {{ config.errorMessage.max }}
+    </mat-error>
+    } @if (config.control?.hasError('min') && config.control.touched &&
+    config.control.dirty) {
+    <mat-error>
+      {{ config.errorMessage.min }}
+    </mat-error>
+    } @if (config.control?.hasError('pattern') && config.control.touched &&
+    config.control.dirty) {
+    <mat-error>
+      {{ config.errorMessage.pattern }}
+    </mat-error>
+    }
+  </mat-form-field>
+</div>

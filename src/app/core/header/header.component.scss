@@ -1,0 +1,30 @@
+.wrapper-header {
+  box-shadow: 0px 0px 5px #ccc;
+  z-index: 2;
+  .main-header {
+    width: 100vw;
+    max-width: calc(100vw - 20%);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    min-height: 75px;
+    align-items: center;
+    .right-nav {
+      .main-logo-title {
+        font-size: 2.5rem;
+        cursor: pointer;
+      }
+    }
+
+    .left-nav {
+      .side-list {
+        display: flex;
+        margin: 0 1.5rem;
+        .item {
+          font-size: 2rem;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

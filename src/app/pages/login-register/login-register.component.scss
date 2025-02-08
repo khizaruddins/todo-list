@@ -1,0 +1,55 @@
+.accounts-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000000;
+  .right {
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: flex-start;
+    background-image: url("/bg-todos.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    .content-box {
+      background-color: #ffffff70;
+      border-radius: 0.6rem;
+      border: 0.1rem solid #ddd;
+      margin: 0 auto;
+      width: 90%;
+      padding: 4rem;
+    }
+    .title {
+      font-size: 4rem;
+      letter-spacing: 0.1rem;
+    }
+    .subtitle {
+      font-size: 5rem;
+      margin-bottom: 1rem;
+    }
+    .desc {
+      font-size: 2.7rem;
+      width: 90%;
+    }
+  }
+  .left {
+    width: 50%;
+    height: 100vh;
+    padding-left: 10rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: flex-start;
+    .login-title {
+      font-size: 3rem;
+      margin-bottom: 2rem;
+    }
+    .login-form {
+      width: 80%;
+    }
+  }
+}
