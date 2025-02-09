@@ -1,0 +1,8 @@
+.checkbox-wrapper {
+  margin-bottom: 1.5rem;
+  ::ng-deep .mdc-label {
+    font-size: 2rem;
+    margin-left: 0;
+    padding-left: 0;
+  }
+}

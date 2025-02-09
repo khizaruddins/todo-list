@@ -88,7 +88,7 @@ export class LoginRegisterComponent {
           ),
         ],
       ],
-      remember: [Validators.required],
+      remember: ['', Validators.required],
     });
 
     this.registerFormGroup = this.fb.group({
@@ -227,6 +227,7 @@ export class LoginRegisterComponent {
 
   onLoginSubmit(event: Event) {
     if (this.loginFormGroup.valid) {
+      console.log(this.loginFormGroup.value);
     } else {
       this.loginFormGroup.markAllAsTouched();
     }

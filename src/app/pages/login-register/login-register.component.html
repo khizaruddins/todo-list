@@ -25,13 +25,22 @@
       @if(loginFormConfig[key].field === 'input') {
       <app-input [config]="loginFormConfig[key]" />
       } @else if (loginFormConfig[key].field === 'checkbox') {
-      <app-checkbox [config]="loginCheckboxConfig[key]"></app-checkbox>
+      <div class="remember-me-section">
+        <app-checkbox [config]="loginFormConfig[key]"></app-checkbox>
+      </div>
       } }
+      <div class="signup-info">
+        Don't have an account? You can create one from
+        <a class="link" (click)="toggleLoginSignupForm()"> here </a>
+      </div>
       <app-button [config]="loginBtnConfig" />
     </form>
-    } @if (info.mode === 'register') { @for (key of
-    objectKeys(registerFormConfig); track key) {
-    <app-input [config]="registerFormConfig[key]" />
-    } }
+    } @if (info.mode === 'register') {
+    <form class="signup-form" (ngSubmit)="onSignupSubmit($event)">
+      @for (key of objectKeys(registerFormConfig); track key) {
+      <app-input [config]="registerFormConfig[key]" />
+      }
+    </form>
+    }
   </div>
 </div>
