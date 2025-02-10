@@ -16,4 +16,10 @@ export class UtilsService {
   toggleDrawer() {
     this.varService.drawer.toggle();
   }
+
+  isObjectEmpty = (objectName: Object) => {
+    return (
+      Object.keys(objectName).length === 0 && objectName.constructor === Object
+    );
+  };
 }

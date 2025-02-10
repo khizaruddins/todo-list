@@ -1,4 +1,5 @@
-@if (isPageLoading) {
+@if (varsService.isPageLoading) {
 <app-loader />
+} @else {
+<h1>THere is some todos pending</h1>
 }
-<router-outlet />

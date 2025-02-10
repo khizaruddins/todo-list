@@ -9,10 +9,15 @@
       <div class="input-search-wrapper">
         <input
           type="text"
-          placeholder="Type here to search.."
+          placeholder="Type here to search anything..."
           name="search"
           [formControl]="searchForm.get('search')"
         />
+      </div>
+      <div class="profile-section">
+        <div class="avatar">
+          <app-avatar></app-avatar>
+        </div>
       </div>
     </div>
   </header>

@@ -60,7 +60,7 @@ mat-drawer {
         &:hover {
           background-color: #7249e2;
         }
-        .active {
+        &.active {
           background: #7249e2;
         }
       }

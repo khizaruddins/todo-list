@@ -1,15 +1,15 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
 import { LoaderComponent } from '../../core/loader/loader.component';
+import { VarsService } from '../../services/vars.service';
 
 @Component({
   selector: 'app-todo-page',
-  imports: [RouterOutlet, LoaderComponent],
+  imports: [LoaderComponent],
   templateUrl: './todo-page.component.html',
   styleUrl: './todo-page.component.scss',
 })
 export class TodoPageComponent {
-  isPageLoading = false;
+  public varsService = inject(VarsService);
 
   ngOnInit() {}
 }

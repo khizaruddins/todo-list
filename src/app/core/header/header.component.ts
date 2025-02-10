@@ -2,7 +2,6 @@ import { Component, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import {
   FormBuilder,
-  FormControl,
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
@@ -10,10 +9,17 @@ import {
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { VarsService } from '../../services/vars.service';
+import { AvatarComponent } from '../avatar/avatar.component';
 
 @Component({
   selector: 'app-header',
-  imports: [MatIconModule, FormsModule, ReactiveFormsModule, MatButtonModule],
+  imports: [
+    MatIconModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    AvatarComponent,
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })

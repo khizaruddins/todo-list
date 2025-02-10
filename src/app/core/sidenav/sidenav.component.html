@@ -1,22 +1,27 @@
 <mat-drawer-container class="example-container">
-  <mat-drawer #drawer class="example-sidenav sidenav" mode="side">
+  <mat-drawer #drawer class="example-sidenav sidenav" mode="side" opened>
     <div class="top-logo">
       <mat-icon>fact_check</mat-icon>
       <span class="todos-title"> todos </span>
     </div>
     <div class="nav-items">
-      <div class="item">
+      <a
+        class="item"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLink="/"
+      >
         <mat-icon>home</mat-icon>
-      </div>
-      <div class="item">
+      </a>
+      <a class="item" routerLinkActive="active" routerLink="/notifications">
         <mat-icon>notifications</mat-icon>
-      </div>
-      <div class="item">
+      </a>
+      <a class="item" routerLinkActive="active" routerLink="/profile">
         <mat-icon>person</mat-icon>
-      </div>
-      <div class="item">
+      </a>
+      <a class="item" routerLinkActive="active" routerLink="/settings">
         <mat-icon> settings </mat-icon>
-      </div>
+      </a>
     </div>
     <div class="bottom-logout-icon">
       <div class="item">

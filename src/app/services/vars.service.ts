@@ -6,6 +6,7 @@ import { MatDrawer, MatDrawerContainer } from '@angular/material/sidenav';
 })
 export class VarsService {
   constructor() {}
+  isPageLoading = false;
   drawer: MatDrawer = {} as MatDrawer;
   setDrawer(drawer: MatDrawer) {
     this.drawer = drawer;

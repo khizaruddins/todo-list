@@ -6,10 +6,11 @@ import {
 } from '@angular/material/sidenav';
 import { VarsService } from '../../services/vars.service';
 import { MatIconModule } from '@angular/material/icon';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-sidenav',
-  imports: [MatSidenavModule, MatIconModule],
+  imports: [MatSidenavModule, MatIconModule, RouterLinkActive, RouterLink],
   templateUrl: './sidenav.component.html',
   styleUrl: './sidenav.component.scss',
 })

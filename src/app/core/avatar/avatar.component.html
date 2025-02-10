@@ -1,6 +1,18 @@
-<div class="avatar-wrapper">
-  <mat-icon>account_clrcle</mat-icon>
-  <div class="user-name">
-    {{ userData?.profile_pic }}
+<div class="avatar-wrapper" matRipple [matMenuTriggerFor]="menu">
+  @if(userData && userData.profile_pic) {
+  <img [src]="userData.profile_pic" alt="profile picture" />
+  } @else {
+  <div class="avatar-default-icon-wrapper">
+    <mat-icon>account_circle</mat-icon>
   </div>
+  } @if (!util.isObjectEmpty(userData)) {
+  <div class="user-name">
+    {{ userData?.fname + userData.lname }}
+  </div>
+  }
 </div>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item routerLink="/profile">View Profile</button>
+  <button mat-menu-item routerLink="/settings">Settings</button>
+</mat-menu>
