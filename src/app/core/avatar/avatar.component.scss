@@ -1,6 +1,10 @@
 .avatar-wrapper {
   font-size: 2rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  column-gap: 1.2rem;
+  text-transform: capitalize;
   .avatar-default-icon-wrapper {
     display: flex;
     align-items: center;

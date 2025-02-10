@@ -10,9 +10,15 @@
     {{ userData?.fname + userData.lname }}
   </div>
   }
+  <div class="user-name">julius novochrome</div>
+  <div class="dropdown-icon">
+    <mat-icon>keyboard_arrow_down</mat-icon>
+  </div>
 </div>
 
 <mat-menu #menu="matMenu">
   <button mat-menu-item routerLink="/profile">View Profile</button>
   <button mat-menu-item routerLink="/settings">Settings</button>
+  <button mat-menu-item routerLink="/urgent">Urgent Tasks</button>
+  <button mat-menu-item routerLink="/logout">Log out</button>
 </mat-menu>

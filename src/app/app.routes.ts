@@ -22,6 +22,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'urgent',
+        loadComponent: () =>
+          import('./pages/urgent/urgent.component').then(
+            (c) => c.UrgentComponent
+          ),
+      },
+      {
         path: 'profile',
         loadComponent: () =>
           import('./pages/profile/profile.component').then(
