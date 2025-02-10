@@ -5,4 +5,9 @@
     [formControl]="config.control"
     >{{ config.label }}</mat-checkbox
   >
+  @if(config.control.hasError('required')) {
+  <mat-error>
+    {{ config.errorMessage?.required }}
+  </mat-error>
+  }
 </div>

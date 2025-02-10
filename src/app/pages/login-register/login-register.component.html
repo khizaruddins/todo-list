@@ -9,7 +9,6 @@
     </div>
   </div>
   <div class="left">
-    @if(info.mode === 'login') {
     <div class="main-title">Todos</div>
     <hr />
     <div class="login-title">
@@ -18,9 +17,10 @@
       <mat-icon>cloud_download</mat-icon>
       Please
       <mat-icon>lock_open</mat-icon>
-      Signin!
+      {{ info.mode === "login" ? "Signin!" : "Register!" }}
     </div>
-    <form class="login-form" (ngSubmit)="onLoginSubmit($event)">
+    @if(info.mode === 'login') {
+    <form class="login-form" (ngSubmit)="onLoginSubmit()">
       @for (key of objectKeys(loginFormConfig); track key) {
       @if(loginFormConfig[key].field === 'input') {
       <app-input [config]="loginFormConfig[key]" />
@@ -36,10 +36,20 @@
       <app-button [config]="loginBtnConfig" />
     </form>
     } @if (info.mode === 'register') {
-    <form class="signup-form" (ngSubmit)="onSignupSubmit($event)">
-      @for (key of objectKeys(registerFormConfig); track key) {
+    <form class="signup-form" (ngSubmit)="onSignupSubmit()">
+      @for (key of objectKeys(registerFormConfig); track key) { @if
+      (registerFormConfig[key].field === 'input') {
       <app-input [config]="registerFormConfig[key]" />
-      }
+      } @else if (registerFormConfig[key].field === 'checkbox') {
+      <div class="terms-section">
+        <app-checkbox [config]="registerFormConfig[key]"></app-checkbox>
+      </div>
+      } }
+      <div class="login-info">
+        Already have an account? You can login from
+        <a class="link" (click)="toggleLoginSignupForm()"> here </a>
+      </div>
+      <app-button [config]="registerBtnConfig" />
     </form>
     }
   </div>

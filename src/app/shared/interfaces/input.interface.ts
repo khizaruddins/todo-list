@@ -1,3 +1,5 @@
+import { ErrorI } from './error.interface';
+
 export interface InputI {
   label: string;
   type: string;
@@ -5,11 +7,5 @@ export interface InputI {
   placeholder: string;
   value: string;
   control: any;
-  errorMessage: {
-    required?: string;
-    email?: string;
-    max?: string;
-    min?: string;
-    pattern?: string;
-  };
+  errorMessage: ErrorI;
 }

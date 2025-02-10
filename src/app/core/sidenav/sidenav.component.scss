@@ -1,0 +1,69 @@
+.mat-drawer-opened {
+  border-radius: 0;
+}
+
+mat-drawer {
+  width: 100px;
+  background-color: #1e0059;
+  color: #fff;
+  padding-top: 2rem;
+  .bottom-logout-icon {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 2rem;
+    .item {
+      padding: 0.8rem;
+      border-radius: 100%;
+      color: #fff;
+      margin: 2rem auto;
+      cursor: pointer;
+      height: 4.5rem;
+      width: 4.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &:hover {
+        background-color: #7249e2;
+      }
+      .active {
+        background: #7249e2;
+      }
+    }
+  }
+
+  &.sidenav {
+    &::ng-deep .mat-drawer-inner-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .top-logo {
+      display: flex;
+      justify-content: center;
+      font-size: 2rem;
+    }
+    .nav-items {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .item {
+        padding: 0.8rem;
+        border-radius: 100%;
+        color: #fff;
+        margin: 2rem auto;
+        cursor: pointer;
+        height: 4.5rem;
+        width: 4.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &:hover {
+          background-color: #7249e2;
+        }
+        .active {
+          background: #7249e2;
+        }
+      }
+    }
+  }
+}

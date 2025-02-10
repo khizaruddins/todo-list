@@ -8,7 +8,12 @@ import {
   Validators,
 } from '@angular/forms';
 import { InputComponent } from '../../core/input/input.component';
-import { NavigationEnd, Router, RouterModule } from '@angular/router';
+import {
+  ActivatedRoute,
+  NavigationEnd,
+  Router,
+  RouterModule,
+} from '@angular/router';
 import { Subscription } from 'rxjs';
 import { MatIconModule } from '@angular/material/icon';
 import { ButtonComponent } from '../../core/button/button.component';
@@ -39,6 +44,7 @@ export class LoginRegisterComponent {
     mode: 'login',
   };
   router = inject(Router);
+  actRoute = inject(ActivatedRoute);
   subs: Subscription[] = [];
   destroyRef = inject(DestroyRef);
   loginBtnConfig: ButtonI = {
@@ -50,10 +56,18 @@ export class LoginRegisterComponent {
     preIcon: 'lock_closed',
   };
 
+  registerBtnConfig: ButtonI = {
+    width: '25%',
+    height: '5rem',
+    btnType: 'outlined',
+    label: 'Register',
+    type: 'submit',
+    preIcon: 'lock_opened',
+  };
+
   constructor() {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        console.log('ended');
         // on router change
         this.initForm();
         this.initFormConfig();
@@ -63,6 +77,17 @@ export class LoginRegisterComponent {
     this.destroyRef.onDestroy(() => {
       this.subs.forEach((sub) => sub.unsubscribe());
     });
+    this.subs.push(
+      this.actRoute.queryParams.subscribe((val) => {
+        this.info.mode = val['mode'];
+        if (typeof val['mode'] === 'undefined') {
+          this.router.navigate([], {
+            queryParams: { mode: 'login' },
+            queryParamsHandling: 'merge',
+          });
+        }
+      })
+    );
     // on load
     this.initForm();
     this.initFormConfig();
@@ -113,6 +138,7 @@ export class LoginRegisterComponent {
           ),
         ],
       ],
+      terms: [false, [Validators.required]],
     });
   }
 
@@ -153,6 +179,7 @@ export class LoginRegisterComponent {
 
     this.registerFormConfig = {
       fname: {
+        field: 'input',
         label: 'Enter your first name',
         type: 'text',
         name: 'fname',
@@ -164,6 +191,7 @@ export class LoginRegisterComponent {
         },
       },
       lname: {
+        field: 'input',
         label: 'Enter your last name',
         type: 'text',
         name: 'lname',
@@ -175,6 +203,7 @@ export class LoginRegisterComponent {
         },
       },
       email: {
+        field: 'input',
         label: 'Enter your email',
         type: 'email',
         name: 'email',
@@ -187,6 +216,7 @@ export class LoginRegisterComponent {
         },
       },
       pass: {
+        field: 'input',
         label: 'Enter your password',
         type: 'password',
         name: 'pass',
@@ -198,6 +228,7 @@ export class LoginRegisterComponent {
         },
       },
       repass: {
+        field: 'input',
         label: 'Please retype password',
         type: 'password',
         name: 'repass',
@@ -206,6 +237,16 @@ export class LoginRegisterComponent {
         value: '',
         errorMessage: {
           required: 'Field required',
+        },
+      },
+      terms: {
+        field: 'checkbox',
+        label:
+          'I agree to terms and condition to utilize my data to create an account and use it for future reference',
+        checked: false,
+        control: this.getControl('register', 'terms'),
+        errorMessage: {
+          required: 'Field Required',
         },
       },
     };
@@ -222,10 +263,15 @@ export class LoginRegisterComponent {
   }
 
   toggleLoginSignupForm() {
-    this.info.mode = this.info.mode === 'login' ? 'register' : 'login';
+    this.router.navigate([], {
+      queryParams: {
+        mode: this.info.mode === 'login' ? 'register' : 'login',
+      },
+      queryParamsHandling: 'merge',
+    });
   }
 
-  onLoginSubmit(event: Event) {
+  onLoginSubmit() {
     if (this.loginFormGroup.valid) {
       console.log(this.loginFormGroup.value);
     } else {
@@ -233,5 +279,11 @@ export class LoginRegisterComponent {
     }
   }
 
-  onSignupSubmit(event: Event) {}
+  onSignupSubmit() {
+    if (this.registerFormGroup.valid) {
+      console.log(this.registerFormGroup.value);
+    } else {
+      this.registerFormGroup.markAllAsTouched();
+    }
+  }
 }

@@ -1,11 +1,18 @@
 <div class="wrapper-header">
-  <header class="main-header">
-    <div class="right-nav">
-      <div class="main-logo-title" routerLink="/">ClickDown</div>
+  <header class="main-top-header">
+    <div class="toggle-hamburger">
+      <button mat-icon-button (click)="toggleDrawer()">
+        <mat-icon>menu</mat-icon>
+      </button>
     </div>
-    <div class="left-nav">
-      <div class="side-list">
-        <div class="item" routerLink="auth">Login / Register</div>
+    <div class="global-search-wrapper">
+      <div class="input-search-wrapper">
+        <input
+          type="text"
+          placeholder="Type here to search.."
+          name="search"
+          [formControl]="searchForm.get('search')"
+        />
       </div>
     </div>
   </header>

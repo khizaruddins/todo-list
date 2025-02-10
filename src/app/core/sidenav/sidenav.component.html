@@ -1,0 +1,31 @@
+<mat-drawer-container class="example-container">
+  <mat-drawer #drawer class="example-sidenav sidenav" mode="side">
+    <div class="top-logo">
+      <mat-icon>fact_check</mat-icon>
+      <span class="todos-title"> todos </span>
+    </div>
+    <div class="nav-items">
+      <div class="item">
+        <mat-icon>home</mat-icon>
+      </div>
+      <div class="item">
+        <mat-icon>notifications</mat-icon>
+      </div>
+      <div class="item">
+        <mat-icon>person</mat-icon>
+      </div>
+      <div class="item">
+        <mat-icon> settings </mat-icon>
+      </div>
+    </div>
+    <div class="bottom-logout-icon">
+      <div class="item">
+        <mat-icon>logout</mat-icon>
+      </div>
+    </div>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <ng-content></ng-content>
+  </div>
+</mat-drawer-container>

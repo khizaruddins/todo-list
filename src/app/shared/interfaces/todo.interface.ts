@@ -12,6 +12,7 @@ interface TodoI {
 interface TodoCommentsI {
   todoId: string;
   commentId: string;
+  userId: string;
   title: string;
   desc: string;
 }

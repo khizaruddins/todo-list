@@ -15,11 +15,10 @@ export class CheckboxComponent {
     label: '',
     checked: false,
     control: new FormControl(false),
+    errorMessage: {
+      required: 'Field required',
+    },
   };
-
-  ngOnChanges() {
-    console.log(this.config);
-  }
   @Output() onChange = new EventEmitter();
 
   onHandleChange(event: Event) {
