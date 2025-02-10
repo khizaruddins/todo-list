@@ -1,0 +1,62 @@
+<div class="dashboard-wrapper">
+  <div class="dashboard-header">
+    <div class="dashboard-title">Todos Dashboard</div>
+    <div class="create-btn">
+      <app-button [config]="createBtnConfig"></app-button>
+    </div>
+  </div>
+  <div class="todo-lanes">
+    <div class="todo-lane-item">
+      <div class="lane-header">
+        <div class="todo-category">Todo</div>
+        <div class="todo-create-btn">
+          <button matRipple (click)="onAddTodo('todo')">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div
+        class="lane-body"
+        cdkDropList
+        [cdkDropListData]="todo"
+        (cdkDropListDropped)="drop($event)"
+      ></div>
+    </div>
+
+    <div class="todo-lane-item">
+      <div class="lane-header">
+        <div class="todo-category">Inprogress</div>
+        <div class="todo-create-btn">
+          <button matRipple (click)="onAddTodo('inprogress')">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div
+        class="lane-body"
+        cdkDropList
+        [cdkDropListData]="inprogress"
+        (cdkDropListDropped)="drop($event)"
+      ></div>
+    </div>
+
+    <div class="todo-lane-item">
+      <div class="lane-header">
+        <div class="todo-category">Completed</div>
+        <div class="todo-create-btn">
+          <button matRipple (click)="onAddTodo('completed')">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div
+        class="lane-body"
+        cdkDropList
+        [cdkDropListData]="completed"
+        (cdkDropListDropped)="drop($event)"
+      >
+      
+    </div>
+    </div>
+  </div>
+</div>

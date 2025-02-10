@@ -1,3 +1,16 @@
 .todo-main-wrapper {
   padding: 0rem 2rem;
 }
+.layout {
+  display: grid;
+  grid-template-columns: 75% 1fr;
+  grid-column-gap: 3rem;
+  padding: 2rem;
+  height: 100%;
+  .dashboard {
+    font-size: 2.5rem;
+  }
+  .analytics {
+    font-size: 2.5rem;
+  }
+}
