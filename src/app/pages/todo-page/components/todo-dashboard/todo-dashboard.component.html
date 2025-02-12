@@ -2,10 +2,13 @@
   <div class="dashboard-header">
     <div class="dashboard-title">Todos Dashboard</div>
     <div class="create-btn">
-      <app-button [config]="createBtnConfig"></app-button>
+      <app-button
+        [config]="createBtnConfig"
+        (onClick)="onAddTodo('todo')"
+      ></app-button>
     </div>
   </div>
-  <div class="todo-lanes">
+  <div class="todo-lanes" cdkDropListGroup>
     <div class="todo-lane-item">
       <div class="lane-header">
         <div class="todo-category">Todo</div>
@@ -18,9 +21,18 @@
       <div
         class="lane-body"
         cdkDropList
+        #todoList="cdkDropList"
         [cdkDropListData]="todo"
+        [cdkDropListConnectedTo]="[inprogressList, completedList]"
         (cdkDropListDropped)="drop($event)"
-      ></div>
+      >
+        @for (item of todo; track $index) {
+        <div class="todo-item-wrapper" cdkDrag>
+          <div class="drag-placeholder" *cdkDragPlaceholder></div>
+          <app-todo-item [data]="item" />
+        </div>
+        }
+      </div>
     </div>
 
     <div class="todo-lane-item">
@@ -35,9 +47,18 @@
       <div
         class="lane-body"
         cdkDropList
+        #inprogressList="cdkDropList"
         [cdkDropListData]="inprogress"
+        [cdkDropListConnectedTo]="[completedList, todoList]"
         (cdkDropListDropped)="drop($event)"
-      ></div>
+      >
+        @for (item of inprogress; track $index) {
+        <div class="todo-item-wrapper" cdkDrag>
+          <div class="drag-placeholder" *cdkDragPlaceholder></div>
+          <app-todo-item [data]="item" />
+        </div>
+        }
+      </div>
     </div>
 
     <div class="todo-lane-item">
@@ -52,11 +73,18 @@
       <div
         class="lane-body"
         cdkDropList
+        #completedList="cdkDropList"
         [cdkDropListData]="completed"
+        [cdkDropListConnectedTo]="[inprogressList, todoList]"
         (cdkDropListDropped)="drop($event)"
       >
-      
-    </div>
+        @for (item of completed; track item) {
+        <div class="todo-item-wrapper" cdkDrag>
+          <div class="drag-placeholder" *cdkDragPlaceholder></div>
+          <app-todo-item [data]="item" />
+        </div>
+        }
+      </div>
     </div>
   </div>
 </div>

@@ -1,0 +1,92 @@
+@use "@angular/material" as mat;
+
+.todo-wrapper {
+  padding: 2.4rem;
+  box-shadow: 0.5rem 1rem 5rem #edebeb;
+  border-radius: 3rem;
+  // min-height: 25rem;
+  .top-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .main-tag {
+      height: 3rem;
+      padding: 0.5rem 1rem;
+      border-radius: 10rem;
+      font-size: 2rem;
+      background-color: #ccc;
+      display: flex;
+      align-items: center;
+      font-size: 1.5rem;
+      padding: 2rem 1.2rem;
+      font-weight: 600;
+      &.blue {
+        background: #ecf3ff;
+        color: #4a7ad9;
+      }
+      &.yellow {
+        background-color: #ffefe2;
+        color: #ed9e4e;
+      }
+      &.purple {
+        background-color: #f1ecff;
+        color: #7b60bf;
+      }
+      &.pink {
+        background-color: #feeeff;
+        color: #d96fda;
+      }
+    }
+    .more-links {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+      background-color: #edebeb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+  }
+  .main-desc {
+    margin-top: 2rem;
+    font-size: 1.8rem;
+  }
+  .percentage-label {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  .progress-bar-wrapper {
+    margin: 2rem auto;
+    mat-progress-bar {
+      border-radius: 100px;
+
+      @include mat.progress-bar-overrides(
+        (
+          track-height: 0.6rem,
+          active-indicator-height: 0.6rem,
+        )
+      );
+    }
+  }
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .attachments,
+    .comments {
+      cursor: pointer;
+      border-radius: 50%;
+      padding: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      column-gap: 0.5rem;
+      span {
+        font-size: 1.3rem;
+      }
+    }
+  }
+}

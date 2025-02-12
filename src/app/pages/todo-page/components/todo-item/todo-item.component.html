@@ -1,0 +1,30 @@
+<div class="todo-wrapper">
+  <div class="top-header">
+    <div class="main-tag yellow">Web Development</div>
+    <div class="more-links" matRipple [matMenuTriggerFor]="menu">
+      <mat-icon>more_horiz</mat-icon>
+    </div>
+  </div>
+  <div class="main-desc">
+    {{ data }}
+  </div>
+  <div class="progress-bar-wrapper">
+    <span class="percentage-label"> 40% </span>
+    <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+  </div>
+  <div class="footer">
+    <div class="attachments" matRipple>
+      <mat-icon>attachment</mat-icon>
+      <span>2</span>
+    </div>
+    <div class="comments" matRipple>
+      <mat-icon>comment</mat-icon>
+      <span>4</span>
+    </div>
+  </div>
+</div>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>View Details</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu>

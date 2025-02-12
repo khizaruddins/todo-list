@@ -1,0 +1,11 @@
+.dialog-wrapper {
+  padding: 3rem;
+  .dialog-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .dialog-title {
+      font-size: 2rem;
+    }
+  }
+}
